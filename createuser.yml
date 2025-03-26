@@ -1,0 +1,23 @@
+---
+- name: Create User in Ansible AWX
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Create user in AWX
+      ansible.builtin.uri:
+        url: "http://192.168.49.2:32275/api/v2/users/"  # AWX API endpoint for users
+        method: POST
+        headers:
+          Authorization: "Bearer ZhtfS0YyN5zzKMCQXdtvLua8JiV9hA"  # Your bearer token
+        body:
+          username: "dev1"  # The username for the new user
+          first_name: "Dev"  # Optional: First name
+          last_name: "One"  # Optional: Last name
+        body_format: json  # Send the body as JSON
+        return_content: yes  # Return the response content
+        status_code: 201  # Expect 201 Created for a successful POST
+      register: result
+
+    - name: Debug the result
+      debug:
+        var: result  # Display the full response
