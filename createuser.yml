@@ -13,6 +13,7 @@
           username: "dev1"  # The username for the new user
           first_name: "Dev"  # Optional: First name
           last_name: "One"  # Optional: Last name
+          password: "securepassword123"
         body_format: json  # Send the body as JSON
         return_content: yes  # Return the response content
         status_code: 201  # Expect 201 Created for a successful POST
